@@ -5,17 +5,18 @@
 		<meta name="viewport" content="width=device-width">
 		<title>Module Search</title>
 		<link rel="stylesheet" href="style.css" type="text/css" media="all" />
+		<link rel="stylesheet" href="typeaheadstyle.css" type="text/css" media="all" />
 	</head>
 	<body>
 		<div class="container">
 			<div class="topbar">
 			</div>
 			<div class="searchbox">
-				<form id="search" action="" method="post">
-					<input type="text" name="q" id="moduleSearcher" placeholder="Search Module" onkeyup="search()" autocomplete="off"/>
+				<form action="" method="get" accept-charset="utf-8">
+					<input type="text" id="search" class="typeahead" placeholder="Search Module"/>
 				</form>
-			</div>
-			<div class="results">
+							</div>
+			<div class="results" id="results">
 				<a href="#" target="_blank" id="moduleLink0"><h1 id="moduleCode0"></h1></a>
 				<h1 id="year0"></h1>
 				<h1 id="title0"></h1>
@@ -27,4 +28,18 @@
 		</div>
 	</body>
 	<script type="text/javascript" src="scripts.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="typeahead.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('#search').typeahead({
+				name: 'moduleCodes',
+				prefetch: 'moduleCodes.json',
+				limit: 80
+			});
+		});
+		$('#search').on('keyup', function() {
+			search();
+		});
+	</script>
 </html>

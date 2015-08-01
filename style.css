@@ -10,12 +10,14 @@ body {
 }
 .searchbox {
 	margin-top: 30px;
+	width: 100%;
 }
 #moduleSearcher {
-	height: 50px;
+	height: 30px;
 	width: 100%;
 	font-size: 20px;
 }
 .results {
 	color: white;
 }
+

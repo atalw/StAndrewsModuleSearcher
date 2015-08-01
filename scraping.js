@@ -1,6 +1,7 @@
 var request = require('request'),
 	cheerio = require('cheerio'),
 	fs = require('fs'),
+	allModules = [],
 	rows = [];
 
 
@@ -20,9 +21,13 @@ request('https://portal.st-andrews.ac.uk/catalogue/Search?dept=xxALL&level=ALL',
 				"title": title.text(),
 			};
 			rows.push(row);
+			allModules.push(moduleCode.text());
 		});
 		fs.writeFile('data.json', JSON.stringify(rows, null, 4), function(err) {
-			console.log("successful");
-		})
+			console.log("successful writing rows");
+		});
+		fs.writeFile('moduleCodes.json', JSON.stringify(allModules, null, 4), function(err) {
+			console.log("successful writing module codes");
+		});
 	}
 });
