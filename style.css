@@ -1,0 +1,21 @@
+body {
+	background-color: #171717;
+}
+.container {
+	width: 70%;
+	margin: auto;
+}
+.topbar {
+
+}
+.searchbox {
+	margin-top: 30px;
+}
+#moduleSearcher {
+	height: 50px;
+	width: 100%;
+	font-size: 20px;
+}
+.results {
+	color: white;
+}

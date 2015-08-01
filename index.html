@@ -4,9 +4,27 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<title>Module Search</title>
-		link
+		<link rel="stylesheet" href="style.css" type="text/css" media="all" />
 	</head>
 	<body>
-		body
+		<div class="container">
+			<div class="topbar">
+			</div>
+			<div class="searchbox">
+				<form id="search" action="" method="post">
+					<input type="text" name="q" id="moduleSearcher" placeholder="Search Module" onkeyup="search()" autocomplete="off"/>
+				</form>
+			</div>
+			<div class="results">
+				<a href="#" target="_blank" id="moduleLink0"><h1 id="moduleCode0"></h1></a>
+				<h1 id="year0"></h1>
+				<h1 id="title0"></h1>
+				<a href="#" target="_blank" id="moduleLink1"><h1 id="moduleCode1"></h1></a>
+				<h1 id="year1"></h1>
+				<h1 id="title1"></h1>
+
+			</div>
+		</div>
 	</body>
+	<script type="text/javascript" src="scripts.js"></script>
 </html>
