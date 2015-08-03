@@ -1,7 +1,8 @@
 var request = new XMLHttpRequest();
-request.open("GET", "data.json", false);
+request.open("GET", "data1.json", false);
 request.send(null);
 var obj = JSON.parse(request.responseText);
+var div = document.getElementById("result");
 
 function search() {
 	var results = [];
@@ -13,16 +14,19 @@ function search() {
 			results.push(obj[i]);
 		}
 	}
-	if (results.length>0) {
-		for(i=0; i<results.length; i++) {
-			document.getElementById('moduleCode' + i.toString()).innerHTML = results[i].moduleCode;
-			document.getElementById("moduleLink" + i.toString()).href = "https://portal.st-andrews.ac.uk/catalogue/" + results[i].moduleLink;
-			document.getElementById("year" + i.toString()).innerHTML = results[i].year;
-			document.getElementById("title" + i.toString()).innerHTML = results[i].title;
+	if (results.length > 1) {
+		document.getElementById('results').innerHTML = '';
+		for (i=0; i<results.length; i++) {
+			document.getElementById("results").appendChild(div.cloneNode(true));
 		}
-	}
-	else {
-		document.getElementById('results').innerHTML = '<a href="#" target="_blank" id="moduleLink0"><h1 id="moduleCode0"></h1></a><h1 id="year0"></h1><h1 id="title0"></h1><a href="#" target="_blank" id="moduleLink1"><h1 id="moduleCode1"></h1></a><h1 id="year1"></h1><h1 id="title1"></h1>';
+		for(i=0; i<results.length; i++) {
+			for (var key in results[i]) {
+				if(results[i].hasOwnProperty(key)) {
+					var detail = '<h1 name="' + key + '">' + key + ' ' + results[i][key] + '</h1>';
+					document.getElementsByName("result")[i].innerHTML = document.getElementsByName("result")[i].innerHTML + detail;
+				}
+			}
+		}
 	}
 }
 
