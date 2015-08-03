@@ -22,8 +22,18 @@ function search() {
 		for(i=0; i<results.length; i++) {
 			for (var key in results[i]) {
 				if(results[i].hasOwnProperty(key)) {
-					var detail = '<h1 name="' + key + '">' + key + ' ' + results[i][key] + '</h1>';
-					document.getElementsByName("result")[i].innerHTML = document.getElementsByName("result")[i].innerHTML + detail;
+					if (key == "moduleCode") {
+						var detail = '<a href="#"><h1 name="' + key + '">' + key + ' ' + results[i][key] + '</h1></a>';
+						console.log('here');
+						document.getElementsByName("result")[i].innerHTML = document.getElementsByName("result")[i].innerHTML + detail;
+					}
+					if (key == "moduleLink") {
+						document.getElementsByName("moduleCode")[i].href = results[i][key];
+					}
+					else {
+						var detail = '<h1 name="' + key + '">' + key + ' ' + results[i][key] + '</h1>';
+						document.getElementsByName("result")[i].innerHTML = document.getElementsByName("result")[i].innerHTML + detail;
+					}
 				}
 			}
 		}
